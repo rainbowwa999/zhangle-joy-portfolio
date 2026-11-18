@@ -155,9 +155,7 @@ h2 { font-size:clamp(21px, 2.8vw, 32px); line-height:1.22; letter-spacing:-.035e
 .contact h2 { margin-bottom:clamp(48px, 8vw, 96px); font-weight:600; }
 .contact-links { display:grid; justify-items:center; gap:23px; text-align:center; }
 .contact-email { max-width:100%; font-size:clamp(20px, 5.5vw, 44px); font-weight:300; letter-spacing:-.025em; overflow-wrap:anywhere; }
-.contact-phone { display:inline-flex; flex-wrap:wrap; justify-content:center; align-items:baseline; gap:10px; font-size:clamp(14px, 2vw, 18px); font-variant-numeric:tabular-nums; letter-spacing:.055em; }
-.contact-label { color:var(--muted); font-size:12px; }
-.contact-email:hover, .contact-phone:hover { text-decoration:underline; text-underline-offset:.22em; }
+.contact-email:hover { text-decoration:underline; text-underline-offset:.22em; }
 .contact-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; }
 .contact-actions .text-button { color:var(--muted); font-size:11px; }
 .footer { display:flex; justify-content:space-between; padding:25px 0 32px; font-size:11px; color:var(--muted); }
@@ -298,7 +296,6 @@ const cheerLuckWebsite = {label: "品牌官网", url: "https://www.cheerluck.com
 const salesDeskDemo = {label: "销售工作台", url: "https://rainbowwa999.github.io/salesdesk-portfolio/"};
 
 const portfolio = {
-  phone: "15398772832",
   email: "1148137915@qq.com",
   github: "",
   creator: "",
@@ -773,11 +770,8 @@ const contacts = document.querySelector("#contact-links");
 const email = element("a", "contact-email", portfolio.email);
 email.href = "mailto:" + portfolio.email;
 email.setAttribute("aria-label", "邮箱 " + portfolio.email);
-const phone = element("a", "contact-phone");
-phone.href = "tel:+86" + portfolio.phone;
-phone.append(element("span", "contact-label", "电话"), element("span", "", portfolio.phone + "（微信同号）"));
 const contactActions = element("div", "contact-actions");
-contacts.append(email, phone);
+contacts.append(email);
 
 for (const [label, url] of [["GitHub", portfolio.github], ["内容账号", portfolio.creator]]) {
   if (!url) continue;
